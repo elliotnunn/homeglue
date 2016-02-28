@@ -41,6 +41,7 @@ mqtt_client.on_message = mqtt_callback
 
 # Start both loops
 notifier = can.Notifier(can_bus, [can_callback])
+mqtt_client.connect('localhost')
 while 1: mqtt_client.loop()
 
 #msg = can.Message(arbitration_id=0xc0ffee, data=[id, i, 0, 1, 3, 1, 4, 1], extended_id=False)
