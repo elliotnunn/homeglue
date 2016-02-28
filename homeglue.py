@@ -36,7 +36,7 @@ def mqtt_callback(client, userdata, msg):
                 send_can_msg([0x4D, 0x00, 0x77])
 
 mqtt_client = mqtt.Client()
-mqtt_client.on_connect = lambda: mqtt_client.subscribe('#')
+mqtt_client.on_connect = lambda a, b, c, d: a.subscribe('#')
 mqtt_client.on_message = mqtt_callback
 
 # Start both loops
