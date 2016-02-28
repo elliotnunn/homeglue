@@ -13,6 +13,7 @@ bustype = 'socketcan_native'
 channel = 'can0'
 
 def can_callback(msg):
+    print(msg.data)
     with big_lock:
         first_byte = msg.data[0]
 
@@ -20,6 +21,7 @@ can_bus = can.interface.Bus(channel=channel, bustype=bustype)
 
 # Set up mqtt and callback
 def mqtt_callback(client, userdata, msg):
+    print(msg.data + ' ' + msg.topic)
     with big_lock:
         # topic, payload, qos, retain
         if msg.topic == 'blinds/elliot_north':
