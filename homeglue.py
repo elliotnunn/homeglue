@@ -23,12 +23,12 @@ def mqtt_callback(client, userdata, msg):
     with big_lock:
         # topic, payload, qos, retain
         if msg.topic == 'blinds/elliot_north':
-            if msg.payload = 'UP':
+            if msg.payload == 'UP':
                 send_can_msg([0x4D, 0x01, 0xFF]); send_can_msg([0x4D, 0x02, 0xFF])
             elif msg.payload == 'DOWN':
                 send_can_msg([0x4D, 0x01, 0x77]); send_can_msg([0x4D, 0x02, 0x77])
         elif msg.topic == 'blinds/elliot_west':
-            if msg.payload = 'UP':
+            if msg.payload == 'UP':
                 send_can_msg([0x4D, 0x00, 0xFF])
             elif msg.payload == 'DOWN':
                 send_can_msg([0x4D, 0x00, 0x77])
