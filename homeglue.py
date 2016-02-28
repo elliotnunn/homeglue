@@ -21,7 +21,7 @@ can_bus = can.interface.Bus(channel=channel, bustype=bustype)
 
 # Set up mqtt and callback
 def mqtt_callback(client, userdata, msg):
-    print(msg.data + ' ' + msg.topic)
+    print(msg.payload + ' ' + msg.topic)
     with big_lock:
         # topic, payload, qos, retain
         if msg.topic == 'blinds/elliot_north':
